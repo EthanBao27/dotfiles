@@ -11,13 +11,12 @@ return {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
-  -- 1. 关闭 lazy.nvim 的自动更新检查和通知弹窗
   {
     "folke/lazy.nvim",
     opts = {
       checker = {
         enabled = true,
-        notify = false
+        notify = true
       },
     },
   },

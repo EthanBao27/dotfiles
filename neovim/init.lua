@@ -4,18 +4,6 @@ require("core/options")
 -- 首先引入 Telescope 内置功能模块
 local builtin = require('telescope.builtin')
 
--- Lazy Update 自动检查更新
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    -- 只有当检测到有更新时才执行更新
-    if require("lazy.checker").has_updates() then
-      vim.defer_fn(function()
-        require("lazy").update() -- 拉最新并安装
-      end, 50)
-    end
-  end,
-})
-
 -- 设置快捷键映射
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find Files" })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live Grep" })
