@@ -11,8 +11,8 @@ return {
     keymap = {
       ['<C-u>']   = { 'scroll_documentation_up', 'fallback' },
       ['<C-d>']   = { 'scroll_documentation_down', 'fallback' },
-      ['<Space>'] = { 'accept' },
-      ['<CR>']    = { 'accept_and_enter' },
+      ['<Space>'] = { 'accept', 'fallback' },
+      ['<CR>']    = { 'accept_and_enter', 'fallback' },
     },
     signature = {
       enabled = true,

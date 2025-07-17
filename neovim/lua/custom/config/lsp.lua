@@ -73,6 +73,24 @@ local servers = {
     },
   },
   clangd = { capabilities = { offsetEncoding = 'utf-8' }, cmd = { 'clangd' } },
+  bashls = {
+    cmd       = { 'bash-language-server', 'start' },
+    filetypes = { "sh", "bash" },
+    root_dir  = util.root_pattern(".git", ".bashrc", ".env", ".profile"),
+    settings  = {
+      bashIde = {
+        globPattern = "*@(.sh|.bash|.inc)", -- 识别后缀
+        codeActions = true,                 -- 启用 Code Actions
+        completions = true,                 -- 启用补全
+        diagnostics = true,                 -- 启用诊断
+        symbols     = true,                 -- 启用符号导航
+        format      = {
+          enable     = true,                -- 启用格式化
+          semicolons = true,                -- 在需要时自动补分号
+        },
+      },
+    }
+  },
   basedpyright = {
     settings = {
       basedpyright = {

@@ -2,6 +2,7 @@
 vim.lsp.enable 'clangd'
 vim.lsp.enable 'rust_analyzer'
 vim.lsp.enable 'gopls'
+vim.lsp.enable 'bash-language-server'
 -- Moved all vim.lsp.enable to after/ftplugin
 
 -- Define LSP-related keymaps

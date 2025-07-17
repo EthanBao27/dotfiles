@@ -401,16 +401,18 @@ M.FilePath = {
 M.FileFlags = {
   {
     condition = function(self)
-      return vim.fn.fnamemodify(self.filename, ':.') ~= '' and vim.api.nvim_get_option_value('modified', { buf = self.bufnr })
+      return vim.fn.fnamemodify(self.filename, ':.') ~= '' and
+          vim.api.nvim_get_option_value('modified', { buf = self.bufnr })
     end,
-    provider = ' 􀴥 ',
+    provider = '   ',
     hl = function(self)
       return { fg = palette.text, bold = self.is_active }
     end,
   },
   {
     condition = function(self)
-      return not vim.api.nvim_get_option_value('modifiable', { buf = self.bufnr }) or vim.api.nvim_get_option_value('readonly', { buf = self.bufnr })
+      return not vim.api.nvim_get_option_value('modifiable', { buf = self.bufnr }) or
+          vim.api.nvim_get_option_value('readonly', { buf = self.bufnr })
     end,
     provider = function(self)
       if vim.api.nvim_get_option_value('buftype', { buf = self.bufnr }) == 'terminal' then
@@ -434,10 +436,14 @@ M.Overseer = {
   end,
   static = {
     symbols = {
-      ['CANCELED'] = ' 􀕧 ',
-      ['FAILURE'] = ' 􀁐 ',
-      ['SUCCESS'] = ' 􀁢 ',
-      ['RUNNING'] = ' 􁾤 ',
+      -- CANCELED：FontAwesome “times” 图标 U+F00D
+      ['CANCELED'] = '  ',
+      -- FAILURE：FontAwesome “times-circle” 图标 U+F057
+      ['FAILURE'] = '  ',
+      -- SUCCESS：FontAwesome “check-circle” 图标 U+F058
+      ['SUCCESS'] = '  ',
+      -- RUNNING：FontAwesome “play” 图标 U+F04B
+      ['RUNNING'] = '  ',
     },
   },
   M.RightPadding(OverseerTasksForStatus 'CANCELED'),
@@ -501,7 +507,8 @@ M.SearchOccurrence = {
   hl = { fg = palette.sky },
   provider = function()
     local sinfo = vim.fn.searchcount { maxcount = 0 }
-    local search_stat = sinfo.incomplete > 0 and ' [?/?]' or sinfo.total > 0 and (' [%s/%s]'):format(sinfo.current, sinfo.total) or ''
+    local search_stat = sinfo.incomplete > 0 and ' [?/?]' or
+        sinfo.total > 0 and (' [%s/%s]'):format(sinfo.current, sinfo.total) or ''
     return search_stat
   end,
 }
