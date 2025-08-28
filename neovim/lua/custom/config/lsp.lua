@@ -131,6 +131,50 @@ local servers = {
       },
     },
   },
+  -- 在 servers 表中添加 tsserver 配置
+  tsserver = {
+    cmd = { "typescript-language-server", "--stdio" },
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+    settings = {
+      typescript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+      javascript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+    },
+  },
+  eslint = {
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    settings = {
+      codeAction = {
+        disableRuleComment = {
+          enable = true,
+          location = "separateLine"
+        },
+        showDocumentation = {
+          enable = true
+        }
+      }
+    }
+  },
 }
 
 -- Set up all server

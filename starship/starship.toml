@@ -1,0 +1,204 @@
+# ─────────────────────────────────────────
+# Global
+# ─────────────────────────────────────────
+add_newline = false
+palette = "everforest"
+
+format = """
+$os\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$python$nodejs$rust\
+$cmd_duration\
+$line_break\
+$status$character"""
+
+# 右侧信息：分支（简短） | 时间 | 电量
+right_format = """
+$git_branch\
+$time\
+$battery"""
+
+# ─────────────────────────────────────────
+# OS / User / Host
+# ─────────────────────────────────────────
+[os]
+disabled = false
+format = '[$symbol]($style) '
+style = 'fg:grey2'
+# 继续使用你的 OS 图标映射
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_root = 'fg:red'
+style_user = 'fg:blue'
+format = '[$user]($style)'
+
+[hostname]
+ssh_only = false
+style = 'fg:blue'
+format = '[@$hostname]($style) '
+
+# ─────────────────────────────────────────
+# Directory
+# ─────────────────────────────────────────
+[directory]
+style = "fg:orange"
+read_only_style = "fg:orange"
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = true
+format = "[ $path]($style)[$read_only]($read_only_style) "
+
+# ─────────────────────────────────────────
+# Git
+# ─────────────────────────────────────────
+[git_branch]
+style = "fg:green"
+symbol = " "
+format = "[ $symbol$branch(:$remote_branch)]($style) "
+
+[git_state]
+format = "([$state( $progress_current/$progress_total)]($style) )"
+style = "fg:yellow"
+
+[git_status]
+style = "fg:aqua"
+conflicted = "⚔"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕${ahead_count}/${behind_count}"
+untracked = "${count}"
+stashed = "${count}"
+modified = "${count}"
+staged = "${count}"
+renamed = "${count}"
+deleted = "${count}"
+# 只在有变化时显示
+format = '([| $all]($style) )'
+# 让输出更紧凑
+disabled = false
+
+# ─────────────────────────────────────────
+# Languages & runtimes
+# ─────────────────────────────────────────
+[rust]
+symbol = " "
+style = "fg:statusline1"
+# 在 Cargo 项目或有 .rs 文件时显示
+format = "[| $symbol$version]($style) "
+
+[nodejs]
+symbol = " "
+style = "fg:green"
+format = "[| $symbol$version]($style) "
+
+[python]
+symbol = " "
+style = "fg:aqua"
+pyenv_version_name = true
+detect_extensions = ["py"]
+# 显示虚拟环境与版本
+format = "[| $symbol$pyenv_prefix$version$virtualenv]($style) "
+
+# ─────────────────────────────────────────
+# Time / Duration / Status / Prompt Char
+# ─────────────────────────────────────────
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+style = "fg:grey1"
+format = "[ |  $time]($style) "
+
+[cmd_duration]
+min_time = 500
+show_notifications = false
+style = "fg:yellow"
+format = "[ |  $duration]($style) "
+
+[status]
+disabled = false
+symbol = ""
+success_symbol = ""
+format = "[$symbol $status]($style) "
+map_symbol = true
+recognize_signal_code = true
+style = "fg:red"
+
+[character]
+success_symbol = '[](bold green)'
+error_symbol = '[](bold red)'
+vicmd_symbol = '[](bold purple)'
+
+# ─────────────────────────────────────────
+# Battery
+# ─────────────────────────────────────────
+[battery]
+format = "[ | $symbol $percentage]($style) "
+disabled = false
+
+[[battery.display]]
+threshold = 20
+style = "fg:red"
+[[battery.display]]
+threshold = 60
+style = "fg:yellow"
+[[battery.display]]
+threshold = 101
+style = "fg:green"
+
+# ─────────────────────────────────────────
+# Palette (Everforest)
+# ─────────────────────────────────────────
+[palettes.everforest]
+bg_dim = "#232a2e"
+bg0 = "#2d353b"
+bg1 = "#343f44"
+bg2 = "#3d484d"
+bg3 = "#475258"
+bg4 = "#4f585e"
+bg5 = "#56635f"
+bg_visual = "#543a48"
+bg_red = "#514045"
+bg_green = "#425047"
+bg_blue = "#3a515d"
+bg_yellow = "#4d4c43"
+
+fg = "#d3c6aa"
+red = "#e67e80"
+orange = "#e69875"
+yellow = "#dbbc7f"
+green = "#a7c080"
+aqua = "#83c092"
+blue = "#7fbbb3"
+purple = "#d699b6"
+grey0 = "#7a8478"
+grey1 = "#859289"
+grey2 = "#9da9a0"
+statusline1 = "#a7c080"
+statusline2 = "#d3c6aa"
+statusline3 = "#e67e80"

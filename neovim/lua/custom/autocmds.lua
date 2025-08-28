@@ -78,3 +78,13 @@ vim.api.nvim_create_autocmd('VimResized', {
     vim.cmd 'wincmd =' -- Equalize window sizes
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*" },
+  callback = function()
+    local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1] or ""
+    if first_line:match("^#!.*bash") then
+      vim.bo.filetype = "bash"
+    end
+  end
+})

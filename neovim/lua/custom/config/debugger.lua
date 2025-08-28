@@ -182,3 +182,40 @@ dap.configurations.python = {
   },
 }
 dap.configurations.qmt = dap.configurations.python
+
+-- 配置 gdb 调试器
+dap.adapters.gdb = {
+  type = 'executable',
+  command = 'gdb', -- 你的 gdb 命令路径
+  name = 'gdb'
+}
+
+dap.configurations.rust = {
+  {
+    name = "Launch Rust Program with GDB",
+    type = "codelldb", -- 使用 gdb
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = false,
+  },
+}
+
+dap.configurations.rust = {
+  {
+    name = "Launch Rust Program",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = false,
+  },
+}

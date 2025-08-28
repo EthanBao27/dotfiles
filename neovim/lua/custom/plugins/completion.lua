@@ -7,12 +7,15 @@ return {
       documentation = {
         auto_show = true,
       },
+      ghost_text = {
+        enabled = false, -- 禁用ghost_text以避免列位置错误
+      },
     },
     keymap = {
-      ['<C-u>']   = { 'scroll_documentation_up', 'fallback' },
-      ['<C-d>']   = { 'scroll_documentation_down', 'fallback' },
-      ['<Space>'] = { 'accept', 'fallback' },
-      ['<CR>']    = { 'accept_and_enter', 'fallback' },
+      ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+      ['<Tab>'] = { 'accept', 'fallback' },
+      ['<CR>']  = { 'accept_and_enter', 'fallback' },
     },
     signature = {
       enabled = true,

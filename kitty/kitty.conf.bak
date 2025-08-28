@@ -49,7 +49,7 @@ toggle_marker regex 1 \\bINFO\\b 2 \\bWARNING\\b 3 \\bERROR\\b 3 \\bFATAL\\b
 map ctrl+shift+m toggle_marker regex 1 \\bINFO\\b 2 \\bWARNING\\b 3 \\bERROR\\b 3 \\bFATAL\\b
 
 # BEGIN_KITTY_THEME
-# Everforest Dark Hard
+# Gruvbox Material Dark Soft
 include current-theme.conf
 # END_KITTY_THEME
 

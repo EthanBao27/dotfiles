@@ -1,9 +1,128 @@
 -- LSP, qi dong!
-vim.lsp.enable 'clangd'
-vim.lsp.enable 'rust_analyzer'
-vim.lsp.enable 'gopls'
-vim.lsp.enable 'bash-language-server'
--- Moved all vim.lsp.enable to after/ftplugin
+-- Load LSP configurations from lsp/ directory
+local lsp_config_path = vim.fn.stdpath 'config' .. '/lsp'
+for _, file in ipairs(vim.fn.glob(lsp_config_path .. '/*.lua', true, true)) do
+  local module_name = file:match('([^/]+)%.lua$')
+  if module_name then
+    -- Add config directory to package.path temporarily
+    local config_path = vim.fn.stdpath 'config'
+    package.path = package.path .. ';' .. config_path .. '/?.lua;' .. config_path .. '/?/init.lua'
+    
+    local ok, config = pcall(require, 'lsp.' .. module_name)
+    if not ok then
+      vim.notify('Failed to load LSP config: lsp.' .. module_name, vim.log.levels.WARN)
+    end
+  end
+end
+
+-- Enable LSP servers based on file type
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'rust',
+  callback = function()
+    vim.defer_fn(function()
+      vim.lsp.enable('rust_analyzer')
+    end, 100)
+  end,
+})
+
+-- Enable LSP servers with a delay to ensure proper loading
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    vim.defer_fn(function()
+      -- Enable common LSP servers
+      vim.lsp.enable('rust_analyzer')
+      vim.lsp.enable('clangd')
+      vim.lsp.enable('gopls')
+      vim.lsp.enable('bashls')
+      vim.lsp.enable('tsserver')
+      vim.lsp.enable('lua_ls')
+      vim.lsp.enable('pylsp')
+      vim.lsp.enable('ruff')
+    end, 500)
+  end,
+})
+
+-- Simple gopls config for testing
+vim.lsp.config('gopls_simple', {
+  cmd = { 'gopls' },
+  filetypes = { 'go', 'gomod', 'gowork' },
+  root_dir = function(fname)
+    return vim.fs.root(fname, 'go.work') or vim.fs.root(fname, 'go.mod') or vim.fs.root(fname, '.git') or vim.fn.getcwd()
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'python'},
+  callback = function()
+    vim.defer_fn(function()
+      vim.lsp.enable('pylsp')
+      vim.lsp.enable('ruff')
+    end, 100)
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'javascript', 'javascriptreact', 'typescript', 'typescriptreact'},
+  callback = function()
+    vim.defer_fn(function()
+      vim.lsp.enable('tsserver')
+    end, 100)
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'lua',
+  callback = function()
+    vim.defer_fn(function()
+      vim.lsp.enable('lua_ls')
+    end, 100)
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto'},
+  callback = function()
+    vim.defer_fn(function()
+      vim.lsp.enable('clangd')
+    end, 100)
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'go', 'gomod', 'gowork'},
+  callback = function()
+    vim.defer_fn(function()
+      vim.lsp.enable('gopls_simple')
+    end, 100)
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'sh', 'bash'},
+  callback = function()
+    vim.defer_fn(function()
+      vim.lsp.enable('bashls')
+    end, 100)
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'tex',
+  callback = function()
+    vim.defer_fn(function()
+      vim.lsp.enable('texlab')
+    end, 100)
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'markdown',
+  callback = function()
+    vim.defer_fn(function()
+      vim.lsp.enable('marksman')
+    end, 100)
+  end,
+})
 
 -- Define LSP-related keymaps
 vim.api.nvim_create_autocmd('LspAttach', {

@@ -1,5 +1,21 @@
+local everforest_palette = {
+  bg0      = "#2d353b", -- hard background
+  bg1      = "#343f44",
+  bg2      = "#3d484d",
+  fg       = "#d3c6aa",
+  red      = "#e67e80",
+  orange   = "#e69875",
+  yellow   = "#d8a657",
+  green    = "#a7c080",
+  aqua     = "#83c092",
+  blue     = "#7fbbb3",
+  purple   = "#d699b6",
+  grey     = "#859289",
+}
+
 local utils = require 'heirline.utils'
-local palette = require('catppuccin.palettes').get_palette 'mocha'
+-- local palette = require('catppuccin.palettes').get_palette 'mocha'
+local palette = everforest_palette
 local components = require 'custom.config.heirline.components'
 
 -- a nice "x" button to close the buffer

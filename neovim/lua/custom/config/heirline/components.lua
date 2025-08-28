@@ -1,4 +1,37 @@
-local palette = require('catppuccin.palettes').get_palette 'mocha'
+local everforest_palette = {
+  bg0    = "#2d353b", -- hard background
+  bg1    = "#343f44",
+  bg2    = "#3d484d",
+  fg     = "#d3c6aa",
+  red    = "#e67e80",
+  orange = "#e69875",
+  yellow = "#d8a657",
+  green  = "#a7c080",
+  aqua   = "#83c092",
+  blue   = "#7fbbb3",
+  purple = "#d699b6",
+  grey   = "#859289",
+}
+
+-- local nord_palette = {
+--   bg0    = "#2E3440",
+--   bg1    = "#3B4252",
+--   bg2    = "#434C5E",
+--   bg3    = "#4C566A",
+--   fg     = "#D8DEE9",
+--   red    = "#BF616A",
+--   orange = "#D08770",
+--   yellow = "#EBCB8B",
+--   green  = "#A3BE8C",
+--   aqua   = "#88C0D0",
+--   blue   = "#81A1C1",
+--   purple = "#B48EAD",
+--   grey   = "#616E88",
+-- }
+
+-- local palette = require('catppuccin.palettes').get_palette 'mocha'
+local palette = everforest_palette
+
 local utils = require 'heirline.utils'
 local conditions = require 'heirline.conditions'
 local icons = require 'custom.ui.icons'
