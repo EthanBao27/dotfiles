@@ -10,7 +10,10 @@
 [![Kitty](https://img.shields.io/badge/Kitty-0.35+-orange?logo=kitty&logoColor=white)](https://sw.kovidgoyal.net/kitty/)
 [![Starship](https://img.shields.io/badge/Starship-1.18+-purple?logo=starship&logoColor=white)](https://starship.rs/)
 
+[🇨🇳 中文版本](README.md) | [🇺🇸 English Version](README.en.md)
+
 </div>
+
 
 ## 🚀 特性
 
@@ -88,7 +91,7 @@ nvim --headless "+Lazy sync" +qa
 ## 📸 预览
 
 ### Neovim 界面
-![Neovim Screenshot](screenshots/neovim.png)
+![Neovim Screenshot](screenshots/terminal.png)
 
 ## 🎨 主题
 

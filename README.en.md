@@ -90,7 +90,7 @@ nvim --headless "+Lazy sync" +qa
 ## 📸 Preview
 
 ### Neovim Interface
-![Neovim Screenshot](screenshots/neovim.png)
+![Neovim Screenshot](screenshots/terminal.png)
 
 ## 🎨 Themes
 
