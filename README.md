@@ -90,8 +90,8 @@ nvim --headless "+Lazy sync" +qa
 
 ## 📸 预览
 
-### Neovim 界面
-![Neovim Screenshot](screenshots/terminal.png)
+### Kitty 界面
+![Kitty Screenshot](screenshots/terminal.png)
 
 ## 🎨 主题
 
