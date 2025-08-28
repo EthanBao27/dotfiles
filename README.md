@@ -1,6 +1,6 @@
 # 💻 dotfiles
 
-> _我的个人 dotfiles 配置集合，包含 Neovim、Kitty、Starship、Neofetch、Fastfetch 等开发环境配置_
+> _我的个人 dotfiles 配置集合，包含 Zsh、Neovim、Kitty、Starship、Neofetch、Fastfetch 等开发环境配置_
 
 <div align="center">
 
@@ -9,6 +9,7 @@
 [![Neovim](https://img.shields.io/badge/Neovim-0.10+-green?logo=neovim&logoColor=white)](https://neovim.io/)
 [![Kitty](https://img.shields.io/badge/Kitty-0.35+-orange?logo=kitty&logoColor=white)](https://sw.kovidgoyal.net/kitty/)
 [![Starship](https://img.shields.io/badge/Starship-1.18+-purple?logo=starship&logoColor=white)](https://starship.rs/)
+[![Zsh](https://img.shields.io/badge/Zsh-5.9+-blue?logo=gnu-bash&logoColor=white)](https://www.zsh.org/)
 [![Neofetch](https://img.shields.io/badge/Neofetch-7.1+-blue?logo=linux&logoColor=white)](https://github.com/dylanaraps/neofetch)
 [![Fastfetch](https://img.shields.io/badge/Fastfetch-2.11+-red?logo=linux&logoColor=white)](https://github.com/fastfetch-cli/fastfetch)
 
@@ -24,10 +25,17 @@
 - **🔧 完整的 LSP 支持** - Python、Lua、Rust、Go、TypeScript 等语言
 - **📝 代码片段** - 支持多种语言的智能代码片段
 - **🖥️ 终端配置** - Kitty 终端与 Starship 提示符
+- **🔧 Shell 配置** - Zsh 与 Oh My Zsh，包含插件和主题配置
 - **📊 系统信息** - Neofetch 和 Fastfetch 系统信息显示
 - **🎯 模块化设计** - 易于维护和扩展的配置结构
 
 ## 📁 配置概览
+
+### Zsh ([`./zsh/`](./zsh/))
+- **Shell 配置**: 包含 .zshrc、.zprofile、.zshenv 配置文件
+- **Oh My Zsh**: 集成 Oh My Zsh 框架和插件管理
+- **Powerlevel10k**: 使用 Powerlevel10k 主题提供强大的提示符
+- **环境变量**: Homebrew、Cargo 等工具的环境变量配置
 
 ### Neovim ([`./neovim/`](./neovim/))
 - **插件管理**: lazy.nvim 自动管理插件
@@ -79,6 +87,11 @@ cd ~/dotfiles
 
 ### 创建符号链接
 ```bash
+# Zsh
+ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
+ln -s ~/dotfiles/zsh/.zprofile ~/.zprofile
+ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
+
 # Neovim
 ln -s ~/dotfiles/neovim ~/.config/nvim
 

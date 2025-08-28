@@ -64,8 +64,14 @@ mv ~/.config/starship.toml ~/.config/starship.toml.backup 2>/dev/null || true
 mv ~/.config/yazi ~/.config/yazi.backup 2>/dev/null || true
 mv ~/.config/neofetch ~/.config/neofetch.backup 2>/dev/null || true
 mv ~/.config/fastfetch ~/.config/fastfetch.backup 2>/dev/null || true
+mv ~/.zshrc ~/.zshrc.backup 2>/dev/null || true
+mv ~/.zprofile ~/.zprofile.backup 2>/dev/null || true
+mv ~/.zshenv ~/.zshenv.backup 2>/dev/null || true
 
 # 创建符号链接
+ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
+ln -s ~/dotfiles/zsh/.zprofile ~/.zprofile
+ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
 ln -s ~/dotfiles/neovim ~/.config/nvim
 ln -s ~/dotfiles/kitty ~/.config/kitty
 ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
@@ -75,6 +81,21 @@ ln -s ~/dotfiles/fastfetch ~/.config/fastfetch
 ```
 
 ### 5. 初始化配置
+
+#### Zsh
+```bash
+# 安装 Oh My Zsh (如果尚未安装)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# 安装 Powerlevel10k 主题
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# 重新加载 zsh 配置
+source ~/.zshrc
+
+# 配置 Powerlevel10k (首次运行时会显示配置向导)
+p10k configure
+```
 
 #### Neovim
 ```bash
@@ -121,6 +142,40 @@ fastfetch
 ```
 
 ## 🔧 详细配置
+
+### Zsh 配置
+
+#### Oh My Zsh 管理
+```bash
+# 编辑 Zsh 配置
+vim ~/.zshrc
+
+# 当前配置包含：
+# - Oh My Zsh 框架集成
+# - Powerlevel10k 主题配置
+# - 常用插件 (zsh-autosuggestions, zsh-syntax-highlighting 等)
+# - 环境变量配置 (Homebrew, Cargo, OrbStack)
+# - 别名和函数定义
+```
+
+#### 插件管理
+```bash
+# 查看已安装的插件
+ls ~/.oh-my-zsh/custom/plugins/
+
+# 安装新插件
+git clone <plugin-url> ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/<plugin-name>
+
+# 在 ~/.zshrc 中添加插件到 plugins=(...)
+```
+
+#### 环境配置
+```bash
+# Zsh 配置文件说明：
+# - .zshrc: 主要配置文件，包含 Oh My Zsh 设置、插件、别名等
+# - .zprofile: 登录时配置，包含环境变量设置
+# - .zshenv: 环境变量配置，包含 Cargo 等工具路径
+```
 
 ### Neovim 配置
 
@@ -355,11 +410,11 @@ nvim --headless "+Lazy sync" +qa
 ### 更新其他工具
 ```bash
 # macOS
-brew upgrade neovim kitty starship yazi fzf neofetch fastfetch
+brew upgrade neovim kitty starship yazi fzf git zsh neofetch fastfetch
 
 # Linux
-sudo apt upgrade neovim kitty starship yazi fzf neofetch fastfetch  # Ubuntu/Debian
-sudo dnf upgrade neovim kitty starship yazi fzf neofetch fastfetch  # Fedora
+sudo apt upgrade neovim kitty starship yazi fzf git zsh neofetch fastfetch  # Ubuntu/Debian
+sudo dnf upgrade neovim kitty starship yazi fzf git zsh neofetch fastfetch  # Fedora
 ```
 
 ## 📞 支持
