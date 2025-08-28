@@ -93,6 +93,16 @@ return {
     get_mod_cache_dir()
     get_std_lib_dir()
     -- see: https://github.com/neovim/nvim-lspconfig/issues/804
-    on_dir(get_root_dir(fname))
+    local root = get_root_dir(fname)
+    on_dir(root or vim.fn.getcwd())
   end,
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
 }

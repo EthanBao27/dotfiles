@@ -9,7 +9,9 @@ for _, file in ipairs(vim.fn.glob(lsp_config_path .. '/*.lua', true, true)) do
     package.path = package.path .. ';' .. config_path .. '/?.lua;' .. config_path .. '/?/init.lua'
     
     local ok, config = pcall(require, 'lsp.' .. module_name)
-    if not ok then
+    if ok and config then
+      vim.lsp.config(module_name, config)
+    else
       vim.notify('Failed to load LSP config: lsp.' .. module_name, vim.log.levels.WARN)
     end
   end
@@ -42,14 +44,6 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
--- Simple gopls config for testing
-vim.lsp.config('gopls_simple', {
-  cmd = { 'gopls' },
-  filetypes = { 'go', 'gomod', 'gowork' },
-  root_dir = function(fname)
-    return vim.fs.root(fname, 'go.work') or vim.fs.root(fname, 'go.mod') or vim.fs.root(fname, '.git') or vim.fn.getcwd()
-  end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {'python'},
@@ -92,7 +86,7 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = {'go', 'gomod', 'gowork'},
   callback = function()
     vim.defer_fn(function()
-      vim.lsp.enable('gopls_simple')
+      vim.lsp.enable('gopls')
     end, 100)
   end,
 })
