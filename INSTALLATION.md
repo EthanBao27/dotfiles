@@ -70,8 +70,8 @@ ln -s ~/dotfiles/neovim ~/.config/nvim
 ln -s ~/dotfiles/kitty ~/.config/kitty
 ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/yazi ~/.config/yazi
-ln -s ~/dotfiles/.config/neofetch ~/.config/neofetch
-ln -s ~/dotfiles/.config/fastfetch ~/.config/fastfetch
+ln -s ~/dotfiles/neofetch ~/.config/neofetch
+ln -s ~/dotfiles/fastfetch ~/.config/fastfetch
 ```
 
 ### 5. 初始化配置

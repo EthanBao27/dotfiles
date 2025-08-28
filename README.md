@@ -55,12 +55,12 @@
 - **插件支持**: parent-arrow、smart-enter、starship 等插件
 - **快捷键**: 高效的文件操作快捷键
 
-### Neofetch ([`./.config/neofetch/`](./.config/neofetch/))
+### Neofetch ([`./neofetch/`](./neofetch/))
 - **系统信息**: 显示操作系统、硬件、内核等信息
 - **Apple 专用**: config-apple.conf 专门针对 macOS 的配置
 - **自定义 logo**: 包含 Catppuccin 主题的 Apple logo
 
-### Fastfetch ([`./.config/fastfetch/`](./.config/fastfetch/))
+### Fastfetch ([`./fastfetch/`](./fastfetch/))
 - **高性能**: 比 Neofetch 更快的系统信息显示
 - **JSON 配置**: 使用 JSONC 格式的配置文件
 - **自定义 ASCII**: 包含自定义 ASCII 艺术显示
@@ -92,10 +92,10 @@ ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/yazi ~/.config/yazi
 
 # Neofetch
-ln -s ~/dotfiles/.config/neofetch ~/.config/neofetch
+ln -s ~/dotfiles/neofetch ~/.config/neofetch
 
 # Fastfetch
-ln -s ~/dotfiles/.config/fastfetch ~/.config/fastfetch
+ln -s ~/dotfiles/fastfetch ~/.config/fastfetch
 ```
 
 ### 安装依赖
