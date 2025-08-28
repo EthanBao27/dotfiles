@@ -25,20 +25,20 @@ cd ~/dotfiles
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # 安装基础工具
-brew install neovim kitty starship yazi fzf git zsh
+brew install neovim kitty starship yazi fzf git zsh neofetch fastfetch
 ```
 
 #### Linux (使用包管理器)
 ```bash
 # Ubuntu/Debian
 sudo apt update
-sudo apt install neovim kitty starship yazi fzf git zsh
+sudo apt install neovim kitty starship yazi fzf git zsh neofetch fastfetch
 
 # Fedora
-sudo dnf install neovim kitty starship yazi fzf git zsh
+sudo dnf install neovim kitty starship yazi fzf git zsh neofetch fastfetch
 
 # Arch Linux
-sudo pacman -S neovim kitty starship yazi fzf git zsh
+sudo pacman -S neovim kitty starship yazi fzf git zsh neofetch fastfetch
 ```
 
 ### 3. 安装字体
@@ -62,12 +62,16 @@ mv ~/.config/nvim ~/.config/nvim.backup 2>/dev/null || true
 mv ~/.config/kitty ~/.config/kitty.backup 2>/dev/null || true
 mv ~/.config/starship.toml ~/.config/starship.toml.backup 2>/dev/null || true
 mv ~/.config/yazi ~/.config/yazi.backup 2>/dev/null || true
+mv ~/.config/neofetch ~/.config/neofetch.backup 2>/dev/null || true
+mv ~/.config/fastfetch ~/.config/fastfetch.backup 2>/dev/null || true
 
 # 创建符号链接
 ln -s ~/dotfiles/neovim ~/.config/nvim
 ln -s ~/dotfiles/kitty ~/.config/kitty
 ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/yazi ~/.config/yazi
+ln -s ~/dotfiles/.config/neofetch ~/.config/neofetch
+ln -s ~/dotfiles/.config/fastfetch ~/.config/fastfetch
 ```
 
 ### 5. 初始化配置
@@ -99,6 +103,21 @@ $(brew --prefix fzf)/install --all
 # 或者手动添加到 ~/.zshrc
 echo 'source <(fzf --zsh)' >> ~/.zshrc
 echo 'source <(fzf --bash)' >> ~/.zshrc
+```
+
+#### Neofetch
+```bash
+# 测试 Neofetch
+neofetch
+
+# 使用 Apple 专用配置
+neofetch --config ~/.config/neofetch/config-apple.conf
+```
+
+#### Fastfetch
+```bash
+# 测试 Fastfetch
+fastfetch
 ```
 
 ## 🔧 详细配置
@@ -212,6 +231,59 @@ vim ~/.config/starship/starship.toml
 # - 时间显示
 ```
 
+### Neofetch 配置
+
+#### 自定义显示
+```bash
+# 编辑 Neofetch 配置
+vim ~/.config/neofetch/config.conf
+
+# 使用 Apple 专用配置
+vim ~/.config/neofetch/config-apple.conf
+
+# 当前配置包含：
+# - 自定义 Apple logo (Catppuccin 主题)
+# - 系统信息显示优化
+# - 颜色主题配置
+```
+
+#### 常用选项
+```bash
+# 显示图片
+neofetch --w3m /path/to/image
+
+# 禁用图片
+neofetch --off
+
+# 使用特定配置
+neofetch --config ~/.config/neofetch/config-apple.conf
+```
+
+### Fastfetch 配置
+
+#### JSONC 配置
+```bash
+# 编辑 Fastfetch 配置
+vim ~/.config/fastfetch/config.jsonc
+
+# 当前配置包含：
+# - 自定义 ASCII 艺术显示
+# - 系统信息模块配置
+# - 颜色和布局优化
+```
+
+#### 常用选项
+```bash
+# 使用特定配置
+fastfetch --config ~/.config/fastfetch/config.jsonc
+
+# 禁用 ASCII 艺术
+fastfetch --logo none
+
+# 显示更多信息
+fastfetch --show-errors
+```
+
 ## 🎨 主题配置
 
 ### 统一主题
@@ -283,11 +355,11 @@ nvim --headless "+Lazy sync" +qa
 ### 更新其他工具
 ```bash
 # macOS
-brew upgrade neovim kitty starship yazi fzf
+brew upgrade neovim kitty starship yazi fzf neofetch fastfetch
 
 # Linux
-sudo apt upgrade neovim kitty starship yazi fzf  # Ubuntu/Debian
-sudo dnf upgrade neovim kitty starship yazi fzf  # Fedora
+sudo apt upgrade neovim kitty starship yazi fzf neofetch fastfetch  # Ubuntu/Debian
+sudo dnf upgrade neovim kitty starship yazi fzf neofetch fastfetch  # Fedora
 ```
 
 ## 📞 支持

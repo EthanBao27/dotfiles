@@ -1,6 +1,6 @@
 # 💻 dotfiles
 
-> _我的个人 dotfiles 配置集合，包含 Neovim、Kitty、Starship 等开发环境配置_
+> _我的个人 dotfiles 配置集合，包含 Neovim、Kitty、Starship、Neofetch、Fastfetch 等开发环境配置_
 
 <div align="center">
 
@@ -9,6 +9,8 @@
 [![Neovim](https://img.shields.io/badge/Neovim-0.10+-green?logo=neovim&logoColor=white)](https://neovim.io/)
 [![Kitty](https://img.shields.io/badge/Kitty-0.35+-orange?logo=kitty&logoColor=white)](https://sw.kovidgoyal.net/kitty/)
 [![Starship](https://img.shields.io/badge/Starship-1.18+-purple?logo=starship&logoColor=white)](https://starship.rs/)
+[![Neofetch](https://img.shields.io/badge/Neofetch-7.1+-blue?logo=linux&logoColor=white)](https://github.com/dylanaraps/neofetch)
+[![Fastfetch](https://img.shields.io/badge/Fastfetch-2.11+-red?logo=linux&logoColor=white)](https://github.com/fastfetch-cli/fastfetch)
 
 [🇨🇳 中文版本](README.md) | [🇺🇸 English Version](README.en.md)
 
@@ -22,6 +24,7 @@
 - **🔧 完整的 LSP 支持** - Python、Lua、Rust、Go、TypeScript 等语言
 - **📝 代码片段** - 支持多种语言的智能代码片段
 - **🖥️ 终端配置** - Kitty 终端与 Starship 提示符
+- **📊 系统信息** - Neofetch 和 Fastfetch 系统信息显示
 - **🎯 模块化设计** - 易于维护和扩展的配置结构
 
 ## 📁 配置概览
@@ -52,6 +55,16 @@
 - **插件支持**: parent-arrow、smart-enter、starship 等插件
 - **快捷键**: 高效的文件操作快捷键
 
+### Neofetch ([`./.config/neofetch/`](./.config/neofetch/))
+- **系统信息**: 显示操作系统、硬件、内核等信息
+- **Apple 专用**: config-apple.conf 专门针对 macOS 的配置
+- **自定义 logo**: 包含 Catppuccin 主题的 Apple logo
+
+### Fastfetch ([`./.config/fastfetch/`](./.config/fastfetch/))
+- **高性能**: 比 Neofetch 更快的系统信息显示
+- **JSON 配置**: 使用 JSONC 格式的配置文件
+- **自定义 ASCII**: 包含自定义 ASCII 艺术显示
+
 ### FZF
 - **模糊查找**: 命令行模糊查找工具
 - **快捷键绑定**: 与 shell 集成的快捷操作
@@ -77,6 +90,12 @@ ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
 
 # Yazi
 ln -s ~/dotfiles/yazi ~/.config/yazi
+
+# Neofetch
+ln -s ~/dotfiles/.config/neofetch ~/.config/neofetch
+
+# Fastfetch
+ln -s ~/dotfiles/.config/fastfetch ~/.config/fastfetch
 ```
 
 ### 安装依赖
