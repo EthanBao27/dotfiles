@@ -23,7 +23,7 @@
 
 ## 📁 配置概览
 
-### Neovim (`./neovim/`)
+### Neovim ([`./neovim/`](./neovim/))
 - **插件管理**: lazy.nvim 自动管理插件
 - **LSP 支持**: Python (pylsp + ruff)、Lua、Rust、Go、TS/JS 等
 - **代码格式化**: conform.nvim 统一代码格式化
@@ -32,22 +32,32 @@
 - **文件浏览**: oil.nvim 现代文件管理器
 - **主题**: Everforest、Catppuccin、Nord 等主题
 
-### Kitty (`./kitty/`)
+### Kitty ([`./kitty/`](./kitty/))
 - **主题配置**: Everforest、Mocha 等主题
 - **字体支持**: 多种 Nerd Font 字体配置
 - **性能优化**: 背景模糊、透明度等视觉效果
 - **快捷键**: 高效的键盘映射和操作
 
-### Starship (`./starship/`)
+### Starship ([`./starship/`](./starship/))
 - **提示符定制**: 优雅的命令行提示符
 - **主题配色**: Everforest 配色方案
 - **信息显示**: Git、Python、Node.js、Rust 等环境信息
+
+### Yazi ([`./yazi/`](./yazi/))
+- **文件管理**: 现代化的终端文件管理器
+- **主题配置**: Everforest、Catppuccin 等主题
+- **插件支持**: parent-arrow、smart-enter、starship 等插件
+- **快捷键**: 高效的文件操作快捷键
+
+### FZF
+- **模糊查找**: 命令行模糊查找工具
+- **快捷键绑定**: 与 shell 集成的快捷操作
 
 ## 🛠️ 安装使用
 
 ### 克隆仓库
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+git clone https://github.com/ethanbao27/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
@@ -61,6 +71,9 @@ ln -s ~/dotfiles/kitty ~/.config/kitty
 
 # Starship
 ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
+
+# Yazi
+ln -s ~/dotfiles/yazi ~/.config/yazi
 ```
 
 ### 安装依赖
@@ -85,6 +98,10 @@ nvim --headless "+Lazy sync" +qa
 - Nord
 - Mocha
 
+## 📖 安装指南
+
+详细的安装说明请查看 [安装指南](INSTALLATION.md)。
+
 ## 🤝 致谢
 
 特别感谢 [patricorgi's config](https://github.com/patricorgi/dotfiles) 提供的 Neovim 配置灵感。
@@ -96,5 +113,5 @@ nvim --headless "+Lazy sync" +qa
 ---
 
 <div align="center">
-Made with ❤️ by <a href="https://github.com/yourusername">baoyuxiang</a>
+Made with ❤️ by <a href="https://github.com/ethanbao27">baoyuxiang</a>
 </div>
